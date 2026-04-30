@@ -1,14 +1,11 @@
 
-NAMES = ["APZ072", "APZ081", "BST097", "BST150", "CAG088", "CAG100","GFG202", "GFG212", "NER080", "NER088", "VAG114", "VAG048", "TOG049", "TOG007", "STG012", "STG003", "SAN126", "SAN049", "PFA045", "PFA029"]
-
-inputdir = "/mnt/itzdata/bamFiles/Capra_hircus/genome/T2T-goat1.0/"
 SCRATCH_DIR = "$TMPDIR"
 
 rule all:
     input:
         "genotyped_shortread_goat_raw.vcf.gz"
 
-#INTERVALS = glob_wildcards("intervals/{chunk}.interval_list").chunk 
+
 INTERVALS = sorted(glob_wildcards("intervals/{chunk}.interval_list").chunk)
 #-M {output.metrics}
 rule call_haplo:
